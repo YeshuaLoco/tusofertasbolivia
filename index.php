@@ -43,115 +43,131 @@ require 'services/class.functions.php';
     <script src="css/awesomplete-gh-pages/awesomplete.js" async></script>
     <style>
 
-    .form-control {
-        display: block;
-        width: 100%;
-        padding: .5rem .75rem;
-        font-size: 1rem;
-        line-height: 1.25;
-        color: #495057;
-        background-color: #fff;
-        background-image: none;
-        background-clip: padding-box;
-        border: 1px solid rgba(0,0,0,.15);
-        border-radius: 0px;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    }
-    .hosting_version.domain_search_area .btn.btn-default.submit_btn {
-        background-color: black;
-        border: medium none;
-        color: #fff;
-        display: inline-block;
-        height: 50px;
-        -webkit-transition-duration: 500ms;
-        transition-duration: 500ms;
-        width: 20%;
-        border-radius: 0px;
-    }
-    .fitness_version .advisor_social_info .social_icon > a:hover {
-        color: #fff;
-        background-color: #27ae60;
-    }
-    
-    .fitness_version .view_more > a {
-        background-color: #ff5722;
-        border-radius: 50%;
-        color: #fff;
-        height: 50px;
-        left: 50%;
-        /* margin-left: 10px; */
-        position: absolute;
-        text-align: center;
-        top: 40%;
-        width: 50px;
-        z-index: 999;
-    }
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: .5rem .75rem;
+            font-size: 1rem;
+            line-height: 1.25;
+            color: #495057;
+            background-color: #fff;
+            background-image: none;
+            background-clip: padding-box;
+            border: 1px solid rgba(0,0,0,.15);
+            border-radius: 0px;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+        .hosting_version.domain_search_area .btn.btn-default.submit_btn {
+            background-color: black;
+            border: medium none;
+            color: #fff;
+            display: inline-block;
+            height: 50px;
+            -webkit-transition-duration: 500ms;
+            transition-duration: 500ms;
+            width: 20%;
+            border-radius: 0px;
+        }
+        .fitness_version .advisor_social_info .social_icon > a:hover {
+            color: #fff;
+            background-color: #27ae60;
+        }
+        
+        .fitness_version .view_more > a {
+            background-color: #ff5722;
+            border-radius: 50%;
+            color: #fff;
+            height: 50px;
+            left: 50%;
+            /* margin-left: 10px; */
+            position: absolute;
+            text-align: center;
+            top: 40%;
+            width: 50px;
+            z-index: 999;
+        }
 
-    body {
-        font-family: "Open Sans",sans-serif;
-        font-size: 14px;
-        line-height: 1em;
-        background: #fff; 
-    }
-    
-    .hosting_version.domain_search_area {
-        position: relative;
-        z-index: 1;
-        background-color: #000;
-    }                
+        body {
+            font-family: "Open Sans",sans-serif;
+            font-size: 14px;
+            line-height: 1em;
+            background: #fff; 
+        }
+        
+        .hosting_version.domain_search_area {
+            position: relative;
+            z-index: 1;
+            background-color: #000;
+        }                
 
-    .img-responsive{
-        max-width: 100%;
-        height: auto;
-        display:block;
-    }
-    .advisor_social_info .social_icon > a {
-        background-color: #fff;
-        border-radius: 50%;
-        color: #2c3e50;
-        display: inline-block;
-        height: 38px;
-        line-height: 36px;
-        font-size: 27px;
-        margin: 0;
-        text-align: center;
-        width: 38px;
-    }
-    .awesomplete {
-        display: block;
-        /*position: relative; */
-    }
-    .awesomplete > ul {
-        border-radius: .3em;
-        margin: 3.5em 0 0;
-        background: hsla(0,0%,100%,.9);
-        background: linear-gradient(to bottom right, white, hsla(0,0%,100%,.8));
-        border: 1px solid rgba(0,0,0,.3);
-        box-shadow: 0.05em 0.2em 0.6em rgba(0,0,0,.2);
-        text-shadow: none;
-    }
-    .de-popular-place:hover {
-        box-shadow: 0 3px 40px 0 #000;
-        border: 1px solid rgba(83,166,233,0.15);
-    }
+        .img-responsive{
+            max-width: 100%;
+            height: auto;
+            display:block;
+        }
+        .advisor_social_info .social_icon > a {
+            background-color: #fff;
+            border-radius: 50%;
+            color: #2c3e50;
+            display: inline-block;
+            height: 38px;
+            line-height: 36px;
+            font-size: 27px;
+            margin: 0;
+            text-align: center;
+            width: 38px;
+        }
+        .awesomplete {
+            display: block;
+            /*position: relative; */
+        }
+        .awesomplete > ul {
+            border-radius: .3em;
+            margin: 3.5em 0 0;
+            background: hsla(0,0%,100%,.9);
+            background: linear-gradient(to bottom right, white, hsla(0,0%,100%,.8));
+            border: 1px solid rgba(0,0,0,.3);
+            box-shadow: 0.05em 0.2em 0.6em rgba(0,0,0,.2);
+            text-shadow: none;
+        }
+        .de-popular-place:hover {
+            box-shadow: 0 3px 40px 0 #000;
+            border: 1px solid rgba(83,166,233,0.15);
+        }
 
-    .bg-primary {
-        background-color: #00AFFF!important;
-    }  
+        .bg-primary {
+            background-color: #00AFFF!important;
+        }  
 
-    .single_latest_news_area .single_latest_news_img_area .news-catagory {
-        padding: 20.5px 15px;
-        color: #fff;
-        position: absolute;
-        bottom: 215px;
-        left: -4px;
-        z-index: 2;
-        font-size: 12px;
-        border-radius: 3px;
-        box-shadow: -4px 3px 12px 0px #000;
-    }
+        .single_latest_news_area .single_latest_news_img_area .news-catagory {
+            padding: 20.5px 15px;
+            color: #fff;
+            position: absolute;
+            bottom: 215px;
+            left: -4px;
+            z-index: 2;
+            font-size: 12px;
+            border-radius: 3px;
+            box-shadow: -4px 3px 12px 0px #000;
+        }
 
-</style>
+    </style>
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            $('#searchAll').click(function(){
+                alert('xxx');
+            });
+
+            $('#searchBox').keyup(function() {
+                $.ajax({
+                  url: "services/controlador.php",
+                  method: "POST",
+                  data: { id : this.value },
+                  dataType: "html"
+                });                
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -160,7 +176,7 @@ require 'services/class.functions.php';
         <div class="classy-load"></div>
     </div>
     <?php
-    include('includes/header.php');
+        include('includes/header.php');
     ?>
     <!-- Hero Block Area Start -->
     <div class="domain_search_area hosting_version section_padding_100 classy-hero-blocks hero-blocks-2 height-700 background-overlay" style="background-image: url(img/business2.jpg);">
@@ -170,7 +186,7 @@ require 'services/class.functions.php';
                     <!-- Search Form Start -->
                     <form action="#" class="domain_form" style = 'margin-top:180px;'>                        
                         <div class="form-group">
-                            <input type="text" list="mylist" name="search" class="form-control search_box awesomplete" style = "width:53%" placeholder="Encuentra lo todo lo que buscas" />
+                            <input id = "searchBox" type="text" list="mylist" name="search" class="form-control search_box awesomplete" style = "width:53%" placeholder="Encuentra lo todo lo que buscas" />
                             <datalist id="mylist">
                                 <option>Ada</option>
                                 <option>Java</option>
@@ -193,7 +209,7 @@ require 'services/class.functions.php';
                                 <option value='TJA'>Tarija</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-default submit_btn">Buscar</button>                       
+                        <button id="searchAll" class="btn btn-default submit_btn">Buscar</button>                       
                     </form>
                 </div>
             </div>
@@ -209,7 +225,7 @@ require 'services/class.functions.php';
             <div class="row">
                 <!-- Single News Area Start -->
                 <?php $arrayOfertas = array();
-                $arrayOfertas = $proveedoresClass->getPromocionPorID(5);
+                $arrayOfertas = $proveedoresClass->getPromocionPorID('');
                 for ($j=0; $j < count($arrayOfertas); $j++) {   
                     ?>
                     <div class="col-12 col-md-6 col-lg-4">
@@ -220,7 +236,7 @@ require 'services/class.functions.php';
                                 <a href="#" class="news-catagory bg-primary" style="font-size:25px"><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_VALOR_DESCUENTO']); ?></a>
                             </div>
                             <div class="single_latest_news_text_area p-15" style ="font-size:18px; background-color: #fff!important">
-                                <a class="news-headline" href="services/puente.php?proUid=<?php echo $aProveedorCat[$j]['PRO_UID']; ?>&proNombreCarpeta=<?php echo $aProveedorCat[$j]['PRO_NOMBRE']; ?>"><?php echo utf8_encode($arrayOfertas[$j]['PRO_NOMBRE']); ?></a>
+                                <a target="_blank" class="news-headline" href="services/puente.php?proUid=<?php echo $aProveedorCat[$j]['PRO_UID']; ?>&proNombreCarpeta=<?php echo $aProveedorCat[$j]['PRO_NOMBRE']; ?>"><?php echo utf8_encode($arrayOfertas[$j]['PRO_NOMBRE']); ?></a>
                                 <div class="post-meta">
                                     <a style="text-decoration: line-through;" href="#"><i class="fa fa-times" aria-hidden="true"></i> <?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_PRECIO_ANTIGUO']); ?> Bs</a>
                                     <a style="font-size: 15px; font-weight: 900; color: #840001;"><i class="fa fa-check" aria-hidden="true"></i> <?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_PRECIO_NUEVO']); ?> Bs</a>

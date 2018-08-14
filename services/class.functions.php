@@ -82,7 +82,8 @@ class proveedoresClass
             $where = "AND P.PRO_UID = '$proUid' ";
         }
 
-        $query = "SELECT PG.PG_TITULO AS PG_TITULO,
+        $query = "SELECT PG.PG_UID AS PG_UID,
+                         PG.PG_TITULO AS PG_TITULO,
                          PG.PG_DESCRIPCION AS PG_DESCRIPCION,
                          PG.PG_PRECIO AS PG_PRECIO,
                          PG.PG_IMAGEN AS PG_IMAGEN 
@@ -106,7 +107,8 @@ class proveedoresClass
             $where = "AND P.PRO_UID = '$proUid' ";
         }
 
-        $query = "SELECT PP.PP_TITULO AS PP_TITULO,
+        $query = "SELECT PP.PP_UID AS PP_UID,
+                         PP.PP_TITULO AS PP_TITULO,
                          PP.PP_DESCRIPCION AS PP_DESCRIPCION,                         
                          PP.PP_IMAGEN AS PP_IMAGEN,
                          PP.PP_PRECIO_ANTIGUO AS PP_PRECIO_ANTIGUO,
@@ -247,6 +249,11 @@ class proveedoresClass
     }    
 
     public function getPromocionPorID($promoUid){
+        if ($promoUid == '') {
+          $where = "WHERE 1 = 1";
+        } else {
+          $where = "WHERE PP.PP_UID = $promoUid";
+        }
         include  'connection/connection.php';
         $query = "SELECT PP.PP_UID AS PROMOCION_UID,
                          P.PRO_UID AS PRO_UID,
@@ -266,7 +273,7 @@ class proveedoresClass
                   FROM proveedores_promociones PP
                   INNER JOIN proveedores P
                   ON P.PRO_UID = PP.PRO_UID
-                  WHERE PP.PP_UID = $promoUid";
+                  " . $where;
         $result = $con->query($query);
         $array = array();
         $array = mysqli_fetch_all($result,MYSQLI_ASSOC);

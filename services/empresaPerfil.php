@@ -71,7 +71,7 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
         cursor:pointer;
     }
     .sticky li:hover{
-        margin-left:-15px;
+        margin-right: -15px;
     }
     .sticky li img{
         float:left;
@@ -91,7 +91,7 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
         width: 100%;
         display:none;
     }
-   
+
     .spa_version .gallery_info p, .spa_version .gallery_info h5, .gallery_area.spa_version .spa_section_heading p, .gallery_area.spa_version .spa_section_heading h2, .spa_version .footer_bottom p > i, .spa_version .footer_bottom p > a:hover {
         color:#000 !important;
     }
@@ -109,6 +109,19 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
         z-index: 9999;
         box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
         background-color: #000;
+    }
+
+    .fitness_version .single_class_slide .time {
+        background-color: #ff5722;
+        border-radius: 0 0 6px 6px;
+        color: #fff;
+        font-weight: 900;
+        padding: 15px;
+        position: absolute;
+        right: 19px;
+        font-size: 20px;
+        top: 0;
+        box-shadow: 5px 3px 12px #000;
     }
     
 </style>   
@@ -153,7 +166,7 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
             <div class="row h-100 align-items-center justify-content-center">
                 <div class="col-12">
                     <div class="welcome_text text-center">
-                        <a href="#" class="btn default-button" style= "background-color: yellow; color:black; font-weight: 900;     font-size: 25px;" role="button">Ver Ofertas</a>
+                        <a href="#offers" class="btn default-button" style= "background-color: yellow; color:black; font-weight: 900;     font-size: 25px;" role="button">Ver Ofertas</a>
                     </div>
                 </div>
             </div>
@@ -171,28 +184,28 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
                         <p>Maprial, líder en Cochabamba.</p>
                     </div>
                     <?php echo utf8_encode($arrayProveedores[0]['PRO_DESCRIPCION']);?>
-                <div class="col-sm-12">
-                    <div class="col-sm-3">
-                        <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3">
+                            <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                             </div>    
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                             </div>    
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                             </div>    
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="spa_service_icon" style="color: rgb(0, 0, 0); background-color: rgb(255, 235, 59);">
                                 <i class="fa fa-leaf" aria-hidden="true"></i>
                             </div>    
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -279,70 +292,114 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
                     </div>
                 </div>
             </div>
-           
-                <div class="row">
-                    <div class="col-12">
-                        <div class="fitness_class_slides">
-                            <?php
-                                $arrayOfertas = array();
-                                $arrayOfertas = $proveedoresClass->getPromociones($proUid);
-                                for ($j=0; $j < count($arrayOfertas); $j++) { 
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="fitness_class_slides">
+                        <?php
+                        $arrayOfertas = array();
+                        $arrayOfertas = $proveedoresClass->getPromocionPorID($proUid);
+                        for ($j=0; $j < count($arrayOfertas); $j++) { 
                             ?>
                             <!-- Single Class Slide -->
                             <div class="single_class_slide">
-                                <img style = "height:350px;" src="../system/<?php echo $arrayOfertas[$j]['PP_IMAGEN']; ?>" alt="">
+                                <img data-target="#product_view<?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_UID']); ?>" data-toggle="modal" style = "height:300px;" src="../system/<?php echo $arrayOfertas[$j]['PROMOCION_IMAGEN']; ?>" alt="">
                                 <div class="time">
-                                    <p>2x1</p>
+                                    <p><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_VALOR_DESCUENTO']); ?></p>
                                 </div>
-                                <div class="title">
-                                    <h4><?php echo utf8_encode($arrayOfertas[$j]['PP_TITULO']); ?></h4>
+                                <div style = "text-align: center" class="title">
+                                    <h4 style ="font-size:20px; font-weight: 900"><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_TITULO']); ?></h4>
                                 </div>
                                 <div class="trainer">
                                 </div>
-                                <div class="description">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, at.</p>
-                                </div>
+                                <div style = "text-align: center" class="description">
+                                    <span style="text-decoration: line-through; font-size: 15px; font-weight: 500;"><i class="fa fa-times" aria-hidden="true"></i><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_PRECIO_ANTIGUO']);?> Bs</span> &nbsp; <span style="font-size: 20px; font-weight: 500; color: #840001;"><i class="fa fa-check" aria-hidden="true"></i><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_PRECIO_NUEVO']);?> Bs </span> <span style="font-size: 15px; font-weight: 500;"> &nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_FECHA_VENCIMIENTO']);?> </span>
+                                </div>                                
                             </div>
                         <?php } ?>
-                        </div>
                     </div>
                 </div>
+            </div>
             
         </div>
     </section>
     <!-- ***** Our Classes Area End ***** -->
 
-    <!-- ***** Trainer 1 Details Area Start ***** -->
-    <div role="dialog" tabindex="-1" id="advisor_details1" class="modal fade in animated slideInDown">
-        <div role="document" class="modal-dialog">
+    <?php
+        $arrayOfertas = array();
+        $arrayOfertas = $proveedoresClass->getPromocionPorID($proUid);
+        for ($j=0; $j < count($arrayOfertas); $j++) { 
+    ?>
+    <div style="font-family: 'Poppins', sans-serif;" class="modal fade product_view" id="product_view<?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_UID']); ?>">
+        <div class="modal-dialog" style = "max-width: 800px; width: 100%;">
             <div class="modal-content">
-                <!-- Modal Head Start -->
-                <div class="modal-header">
-                    <h5 class="modal-title" id="teammodelhead"><?php echo utf8_encode($arrayOfertas[0]['PP_TITULO']); ?></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <div style ="min-height: 16.43px; padding: 15px; border-bottom: 1px solid #e5e5e5; display: block;" class="modal-header">
+                    <a href="#" data-dismiss="modal" class="class pull-right"><span class="fa fa-times"></span></a>
+                    <h3 class="modal-title"><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_TITULO']); ?></h3>
                 </div>
-                <!-- Modal Body Start -->
-                <div class="modal_body">
-                    <!-- single gallery description start -->
-                    <div class="single_gallery_area text-center p-30">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="team_advisor_thumb">
-                                        <img src="../system/<?php echo $arrayOfertas[0]['PP_IMAGEN']; ?>" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <!--  Gallery Details Info -->
-                                    <div class="single_team_advisor_info">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 product_img">
+                            <img src="../system/<?php echo $arrayOfertas[$j]['PROMOCION_IMAGEN']; ?>" class="img-responsive">
+                        </div>
+                        <div class="col-md-6 product_content">
+                            <button style = "margin:15px; font-size: 30px; float: left;" type="button" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_VALOR_DESCUENTO']); ?></button>
+                            <div class="rating">
+                                <?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_FECHA_VENCIMIENTO']);?>
+                            </div>
+                            <p><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_DESCRIPCION']); ?></p>
+                            <h3 class="cost"><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_PRECIO_NUEVO']);?> Bs &nbsp;&nbsp;<small class="pre-cost" style="text-decoration: line-through;"><?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_PRECIO_ANTIGUO']);?> Bs</small></h3>
+                            <div class="space-ten"></div>
+                            <div class="btn-ground">
+                                <a target = "_blank" style = "width:100%" type="button" class="btn btn-primary" href='https://api.whatsapp.com/send?phone=<?php echo $arrayOfertas[0]['PRO_WHATSAPP']; ?>&text=Hola, deseo saber más sobre la promoción "<?php echo utf8_encode($arrayOfertas[$j]['PROMOCION_DESCRIPCION']); ?>"'>Contactate &nbsp;<i style = "font-size: 25px;" class="fa fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
-                                        <!-- Description -->
-                                        <div class="description">
-                                            <p><?php echo utf8_encode($arrayOfertas[0]['PP_DESCRIPCION']); ?></p>
+    <!-- ***** Trainer 1 Details Area Start ***** -->
+    <?php
+    $arrayProveedoresGaleria = array();
+    $arrayProveedoresGaleria = $proveedoresClass->getProveedoresGaleria();
+    for ($j=0; $j < count($arrayProveedoresGaleria); $j++) { 
+        ?>
+        <div role="dialog" tabindex="-1" id="advisor_details<?php echo $arrayProveedoresGaleria[$j]['PG_UID']; ?>" class="modal fade in animated slideInDown">
+            <div role="document" class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Head Start -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="teammodelhead"><?php echo $arrayProveedoresGaleria[$j]['PG_TITULO']; ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+
+                    <!-- Modal Body Start -->
+                    <div class="modal_body">
+                        <!-- single gallery description start -->
+                        <div class="single_gallery_area text-center p-30">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="team_advisor_thumb">
+                                            <img style="width: 100%; height: 100%" src="../system/<?php echo $arrayProveedoresGaleria[$j]['PG_IMAGEN']; ?>" alt="">
                                         </div>
-                                        <!-- live preview button -->
-                                        <div class="live_preview">
-                                            <a class="btn btn-pill btn-flat-pumpkin" href="#">Contactate</a>
+                                    </div>
+                                    <div class="col-12">
+                                        <!--  Gallery Details Info -->
+                                        <div class="single_team_advisor_info">
+
+                                            <!-- Description -->
+                                            <div class="description">
+                                                <p><?php echo utf8_encode($arrayProveedoresGaleria[0]['PG_DESCRIPCION']); ?></p>
+                                            </div>
+                                            <!-- live preview button -->
+                                            <div class="live_preview">
+                                                <a class="btn btn-pill btn-flat-pumpkin" href="#"><?php echo $arrayProveedoresGaleria[$j]['PG_PRECIO']; ?> Bs</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -352,11 +409,11 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
     <!-- ***** Trainer Details Area End ***** -->
 
     <!-- ***** Trainer Area Start ***** -->
-    <section class="our_advisor_area fitness_version clearfix section_padding_100_70" id="trainer">
+    <section class="our_advisor_area fitness_version clearfix section_padding_100_70" id="gallery">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -371,37 +428,34 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
                 <div class="col-12">
                     <div class="fitness_advisor_slides">
                         <?php
-                            $arrayProveedoresGaleria = array();
-                            $arrayProveedoresGaleria = $proveedoresClass->getProveedoresGaleria($proUid);
-                            for ($j=0; $j < count($arrayProveedoresGaleria); $j++) {                                             
-                        ?>
-                        <div class="single_advisor">
-                            <!-- Single advisor profile thumb -->
-                            <div class="advisor_thumb">
-                                <img style = "height: 340px; " src="../system/<?php echo $arrayProveedoresGaleria[$j]['PG_IMAGEN']; ?>" alt="">
-                                <!-- Single advisor social link -->                               
-                            </div>
-                            <!-- Single advisor profile details -->
-                            <div class="single_advisor_details_info">
-                                <h4><?php echo $arrayProveedoresGaleria[$j]['PG_TITULO']; ?></h4>
-                                <p><?php echo $arrayProveedoresGaleria[$j]['PG_PRECIO']; ?> Bs</p>
-                                <!-- View More -->
-                                <div class="view_more">
-                                    <a data-target="#advisor_details1" data-toggle="modal" href="#"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                        $arrayProveedoresGaleria = array();
+                        $arrayProveedoresGaleria = $proveedoresClass->getProveedoresGaleria($proUid);
+                        for ($j=0; $j < count($arrayProveedoresGaleria); $j++) {                                             
+                            ?>
+                            <div class="single_advisor">
+                                <!-- Single advisor profile thumb -->
+                                <div class="advisor_thumb">
+                                    <img data-target="#advisor_details<?php echo $arrayProveedoresGaleria[$j]['PG_UID']; ?>" data-toggle="modal" style = "height: 340px; " src="../system/<?php echo $arrayProveedoresGaleria[$j]['PG_IMAGEN']; ?>" alt="">
+                                    <!-- Single advisor social link -->                               
+                                </div>
+                                <!-- Single advisor profile details -->
+                                <div class="single_advisor_details_info">
+                                    <h4><?php echo $arrayProveedoresGaleria[$j]['PG_TITULO']; ?></h4>
+                                    <p><?php echo $arrayProveedoresGaleria[$j]['PG_PRECIO']; ?> Bs</p>
+                                    <!-- View More -->
                                 </div>
                             </div>
-                        </div>
-                    <?php } ?>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- ***** Trainer Area End ***** -->
+    </div>
+</section>
+<!-- ***** Trainer Area End ***** -->
 
 
-    <!-- Classy Rating -->
+<!-- Classy Rating -->
     <!--<div class="classy-star-three">
         <fieldset>
             <input type="radio" id="c-star5" name="rating" value="5"><label for="star5" title="Outstanding">5 stars</label>
@@ -417,6 +471,121 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
         <div class="map_area" id="googleMap"></div>
     </div>
     <!-- ***** Message Now Area Start ***** -->   
+
+    <section class="faq_question_area section_padding_100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <!-- Section Heading Start -->
+                    <div class="section_heading text-left">
+                        <h3>Frequently asked questions</h3>
+                    </div>
+                    <!-- FAQ Area Start -->
+                    <div class="faq_area">
+                        <div class="accordions" id="accordion" role="tablist" aria-multiselectable="true">
+
+                            <!-- single accordian area start -->
+                            <div class="panel single-accordion">
+                                <h6>
+                                    <a role="button" class="collapsed" aria-expanded="true" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">How can I contact for support?
+                                    <span class="accor-open"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                                    <span class="accor-close"><i class="fa fa-sort-asc" aria-hidden="true"></i></span>
+                                    </a>
+                                </h6>
+                                <div id="collapseOne" class="accordion-content collapse">
+                                    <p>Please go to our profile page. Then mail us. We will reply you within 24 Hours.</p>
+                                </div>
+                            </div>
+
+                            <!-- single accordian area start -->
+                            <div class="panel single-accordion">
+                                <h6>
+                                    <a role="button" class="collapsed" aria-expanded="true" aria-controls="two" data-parent="#accordion" data-toggle="collapse" href="#two">Contact form active?
+                                    <span class="accor-open"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                                    <span class="accor-close"><i class="fa fa-sort-asc" aria-hidden="true"></i></span>
+                                    </a>
+                                </h6>
+                                <div id="two" class="accordion-content collapse">
+                                    <p>Yes, the contact form is active. First open the mail.php file. Then remove the default mail address & placed your mail address.</p>
+                                </div>
+                            </div>
+
+                            <!-- single accordian area start -->
+                            <div class="panel single-accordion">
+                                <h6>
+                                    <a role="button" aria-expanded="true" aria-controls="three" class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#three">Can I use my own font in this template? 
+                                     <span class="accor-open"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                                <span class="accor-close"><i class="fa fa-sort-asc" aria-hidden="true"></i></span>
+                                    </a>
+                                </h6>
+                                <div id="three" class="accordion-content collapse">
+                                    <p>Sure, we used google fonts library. You can use your desire fonts.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="testimonials_area m-xs-top-30">
+                        <div class="testimonials">
+                            <!-- Single testimonial area start  -->
+                            <div class="single_testimonial_area">
+                                <!-- Single testimonial thumb  -->
+                                <div class="testimonial_author_thumb">
+                                    <img src="img/advisor-img/tes-1.jpg" alt="">
+                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </div>
+                                <!-- Single testimonial text  -->
+                                <div class="testimonial_text">
+                                    <p>Classy - is an awesome template. It's design looks pretty good. Code is really clean. Explained Documentation, Fast &amp; beautiful.</p>
+                                </div>
+                                <div class="testimonial_author_name">
+                                    <h5>Yasin Rahman</h5>
+                                    <h6>WrapBootstrap User</h6>
+                                </div>
+                            </div>
+
+                            <!-- Single testimonial area start  -->
+                            <div class="single_testimonial_area">
+                                <!-- Single testimonial thumb  -->
+                                <div class="testimonial_author_thumb">
+                                    <img src="img/advisor-img/tes-2.jpg" alt="">
+                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </div>
+                                <!-- Single testimonial text  -->
+                                <div class="testimonial_text">
+                                    <p>Theme is very good. Support is fast &amp; helpful. Thank you.</p>
+                                </div>
+                                <div class="testimonial_author_name">
+                                    <h5>Rafiqul Islam</h5>
+                                    <h6>WrapBootstrap User</h6>
+                                </div>
+                            </div>
+
+                            <!-- Single testimonial area start  -->
+                            <div class="single_testimonial_area">
+                                <!-- Single testimonial thumb  -->
+                                <div class="testimonial_author_thumb">
+                                    <img src="img/advisor-img/tes-3.jpg" alt="">
+                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </div>
+                                <!-- Single testimonial text  -->
+                                <div class="testimonial_text">
+                                    <p>Fast, neat and beautiful. Nailed it!</p>
+                                </div>
+                                <div class="testimonial_author_name">
+                                    <h5>Lim Sarah</h5>
+                                    <h6>WrapBootstrap User</h6>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div class="sticky-container">
         <ul class="sticky" style="background-color:black;">
@@ -466,7 +635,7 @@ $arrayProveedores = $proveedoresClass->getProveedores($proUid);
     <!-- Slider Active JS  -->
     <script src="../slidea-assets/js/templates/spa-slider-active.js" type="text/javascript"></script>
     <!-- Google Maps js -->
-    <script src="../https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9KNSL1jTv4MY9Pza6w8DJkpI_nHyCnk" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDk9KNSL1jTv4MY9Pza6w8DJkpI_nHyCnk" type="text/javascript"></script>
     <!-- Google Maps Active js -->
     <script src="../js/google-map/map-active.js"></script>
     <script>
